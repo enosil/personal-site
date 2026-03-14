@@ -674,7 +674,7 @@
   <div class="section-box links-section">
     <h2>📧 Contact 📧</h2>
     <div class="links-grid">
-      <a href="/cdn-cgi/l/email-protection#d2abbda792b7bcbda1bbbefcb1bdbf" class="link-button">
+      <a href="mailto:you@enosil.com" class="link-button">
         <span class="link-icon">📧</span>Email Me
       </a>
     </div>
@@ -730,7 +730,7 @@
 
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 
   // ====== WORLD CLOCKS ======
   function updateClocks() {
@@ -816,4 +816,12 @@
   // Fake visitor counter increment
   const counter = document.getElementById('visitorCount');
   let count = 4782;
-  setInterval(() =>
+  setInterval(() => {
+    count += Math.floor(Math.random() * 3);
+    counter.textContent = String(count).padStart(6, '0');
+  }, 15000);
+
+</script>
+
+</body>
+</html>
