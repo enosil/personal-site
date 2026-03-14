@@ -163,11 +163,19 @@
 
   /* ====== SECTION BOXES ====== */
   .section-box {
-    border: 3px ridge #888;
     margin: 20px 0;
     padding: 15px;
     background: rgba(0, 0, 50, 0.85);
     position: relative;
+    border: 3px solid #999;
+    border-top-color: #ccc;
+    border-left-color: #ccc;
+    border-right-color: #555;
+    border-bottom-color: #555;
+    box-shadow:
+      inset 1px 1px 0 rgba(255,255,255,0.15),
+      inset -1px -1px 0 rgba(0,0,0,0.3),
+      2px 2px 0 #333;
   }
 
   .section-box h2 {
@@ -200,7 +208,11 @@
   }
 
   .cats-section {
-    border-color: #ff69b4;
+    border-color: #999;
+    border-top-color: #ccc;
+    border-left-color: #ccc;
+    border-right-color: #555;
+    border-bottom-color: #555;
   }
 
   .cats-grid {
@@ -213,12 +225,16 @@
 
   .cat-card {
     display: inline-block;
-    border: 2px dashed #ff69b4;
     padding: 12px;
     text-align: center;
-    background: rgba(255, 105, 180, 0.08);
+    background: rgba(0, 0, 40, 0.5);
     width: 140px;
     vertical-align: top;
+    border: 2px solid #999;
+    border-top-color: #ccc;
+    border-left-color: #ccc;
+    border-right-color: #555;
+    border-bottom-color: #555;
   }
 
   .cat-card .cat-img {
@@ -379,8 +395,16 @@
     text-align: center;
     margin: 15px 0;
     padding: 12px;
-    border: 3px ridge #ff00ff;
     background: rgba(255, 0, 255, 0.06);
+    border: 3px solid #999;
+    border-top-color: #ccc;
+    border-left-color: #ccc;
+    border-right-color: #555;
+    border-bottom-color: #555;
+    box-shadow:
+      inset 1px 1px 0 rgba(255,255,255,0.15),
+      inset -1px -1px 0 rgba(0,0,0,0.3),
+      2px 2px 0 #333;
   }
 
   .guestbook-cta a {
@@ -561,7 +585,7 @@
   <div class="section-box links-section">
     <h2>📧 Contact 📧</h2>
     <div class="links-grid">
-      <a href="mailto:you@enosil.com" class="link-button">
+      <a href="/cdn-cgi/l/email-protection#d2abbda792b7bcbda1bbbefcb1bdbf" class="link-button">
         <span class="link-icon">📧</span>Email Me
       </a>
     </div>
@@ -615,7 +639,7 @@
 
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const sparkles = ['✨', '⭐', '💫', '✦', '★'];
   let lastSparkle = 0;
 
@@ -637,11 +661,4 @@
   // Fake visitor counter increment
   const counter = document.getElementById('visitorCount');
   let count = 4782;
-  setInterval(() => {
-    count += Math.floor(Math.random() * 3);
-    counter.textContent = String(count).padStart(6, '0');
-  }, 15000);
-</script>
-
-</body>
-</html>
+  setInterval(() =>
