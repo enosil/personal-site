@@ -635,6 +635,12 @@ body {
   max-width: 700px;
 }
 
+.sidebar-right {
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+}
+
 /* ====== SIDEBAR WIDGETS ====== */
 .sidebar-widget {
   background: rgba(0, 0, 50, 0.9);
