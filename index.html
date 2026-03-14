@@ -390,6 +390,95 @@
     font-size: 10px;
   }
 
+  /* ---- Clocks ---- */
+  .clocks-section h2 {
+    color: #00ffff;
+    border-color: #00ffff;
+  }
+
+  .clocks-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .clock-card {
+    text-align: center;
+    padding: 10px 16px;
+    background: #000;
+    border: 2px solid #999;
+    border-top-color: #555;
+    border-left-color: #555;
+    border-right-color: #ccc;
+    border-bottom-color: #ccc;
+    min-width: 160px;
+  }
+
+  .clock-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #888;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .clock-display {
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
+    color: #00ff00;
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+    letter-spacing: 3px;
+  }
+
+  .clock-date {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  /* ---- News ---- */
+  .news-section h2 {
+    color: #ff6600;
+    border-color: #ff6600;
+  }
+
+  .news-item {
+    border-left: 3px solid #ff6600;
+    padding: 6px 12px;
+    margin: 8px 0;
+    background: rgba(255, 102, 0, 0.05);
+  }
+
+  .news-item a {
+    color: #ffcc66;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .news-item a:hover {
+    color: #ffff00;
+    text-decoration: underline;
+  }
+
+  .news-source {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  .news-loading {
+    color: #888;
+    font-size: 13px;
+    text-align: center;
+    font-style: italic;
+    padding: 10px 0;
+  }
+
   /* ====== GUESTBOOK LINK ====== */
   .guestbook-cta {
     text-align: center;
@@ -591,34 +680,36 @@
     </div>
   </div>
 
-  <!-- ====== BLOG ====== -->
-  <div class="section-box blog-section">
-    <h2>📝 Blog / Updates 📝</h2>
-    <!--
-    placeholder blog entry addition thingy:
-
-    <div class="blog-entry">
-      <div class="blog-date">[ YYYY.MM.DD ] <span class="blog-new-badge">NEW!</span></div>
-      <p>Your update text here.</p>
+  <!-- ====== WORLD CLOCKS ====== -->
+  <div class="section-box clocks-section">
+    <h2>🕐 World Clocks 🕐</h2>
+    <div class="clocks-grid">
+      <div class="clock-card">
+        <div class="clock-label">Philippines</div>
+        <div class="clock-display" id="clock-ph"></div>
+        <div class="clock-date" id="date-ph"></div>
+      </div>
+      <div class="clock-card">
+        <div class="clock-label">New York</div>
+        <div class="clock-display" id="clock-ny"></div>
+        <div class="clock-date" id="date-ny"></div>
+      </div>
+      <div class="clock-card">
+        <div class="clock-label">London</div>
+        <div class="clock-display" id="clock-uk"></div>
+        <div class="clock-date" id="date-uk"></div>
+      </div>
     </div>
-
-    Remove the "blog-new-badge" span from older entries.
-    -->
-    <p class="blog-empty">nothing here yet. check back later.</p>
   </div>
 
   <hr class="rainbow-hr">
 
-  <!-- ====== INTERESTS ====== -->
-  <div class="section-box interests-section">
-    <h2>✨ Interests ✨</h2>
-    <ul>
-      <li>cats</li>
-      <li>[ to add ]</li>
-      <li>[ to add ]</li>
-      <li>[ to add ]</li>
-      <li>[ to add ]</li>
-    </ul>
+  <!-- ====== NEWS FEED ====== -->
+  <div class="section-box news-section">
+    <h2>📡 News Feed 📡</h2>
+    <div id="news-feed">
+      <p class="news-loading">loading news...</p>
+    </div>
   </div>
 
   <!-- ====== GUESTBOOK CTA ====== -->
@@ -640,6 +731,70 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+  // ====== WORLD CLOCKS ======
+  function updateClocks() {
+    const zones = [
+      { id: 'ph', tz: 'Asia/Manila' },
+      { id: 'ny', tz: 'America/New_York' },
+      { id: 'uk', tz: 'Europe/London' }
+    ];
+
+    zones.forEach(z => {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-US', {
+        timeZone: z.tz,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+      const date = now.toLocaleDateString('en-US', {
+        timeZone: z.tz,
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric'
+      });
+      document.getElementById('clock-' + z.id).textContent = time;
+      document.getElementById('date-' + z.id).textContent = date;
+    });
+  }
+
+  updateClocks();
+  setInterval(updateClocks, 1000);
+
+  // ====== NEWS FEED ======
+  // Uses rss2json to convert RSS feeds into JSON (free, no API key needed)
+  async function loadNews() {
+    const feed = document.getElementById('news-feed');
+    try {
+      const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml&count=5');
+      const data = await res.json();
+
+      if (data.status === 'ok' && data.items.length > 0) {
+        feed.innerHTML = '';
+        data.items.slice(0, 5).forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'news-item';
+          div.innerHTML = `
+            <a href="${item.link}" target="_blank">${item.title}</a>
+            <div class="news-source">BBC News · ${new Date(item.pubDate).toLocaleDateString()}</div>
+          `;
+          feed.appendChild(div);
+        });
+      } else {
+        feed.innerHTML = '<p class="news-loading">could not load news.</p>';
+      }
+    } catch (e) {
+      feed.innerHTML = '<p class="news-loading">could not load news.</p>';
+    }
+  }
+
+  loadNews();
+  // Refresh news every 10 minutes
+  setInterval(loadNews, 600000);
+
+  // ====== SPARKLE TRAIL ======
   const sparkles = ['✨', '⭐', '💫', '✦', '★'];
   let lastSparkle = 0;
 
