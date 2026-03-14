@@ -607,34 +607,32 @@ body {
   background-size: 400% 100%;
 }
 
-/* ====== THREE-COLUMN LAYOUT ====== */
+/* ====== TWO-COLUMN LAYOUT ====== */
 .site-layout {
-  max-width: 700px;
+  display: flex;
+  max-width: 1100px;
   margin: 0 auto;
+  gap: 10px;
   padding: 10px;
+  align-items: flex-start;
 }
 
 .sidebar {
-  position: fixed;
+  width: 180px;
+  min-width: 180px;
+  max-width: 180px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.sidebar-left {
-  top: 80px;
-  left: 10px;
-  width: 180px;
-}
-
-.sidebar-right {
-  top: 80px;
-  right: 10px;
-  left: calc(50% + 360px);
+  position: sticky;
+  top: 10px;
 }
 
 .main-content {
-  width: 100%;
+  flex: 1;
+  min-width: 0;
+  max-width: 800px;
 }
 
 /* ====== SIDEBAR WIDGETS ====== */
@@ -810,76 +808,65 @@ body {
 }
 
 /* ---- Search Widget ---- */
-.search-widget {
-  background: #c0c0c0;
-  border: 3px outset #ddd;
-  padding: 10px 15px;
-  box-shadow: none;
-  text-align: center;
+.search-widget h3 {
+  color: #ffff00;
+  border-color: #ffff00;
 }
 
 .search-widget .search-powered {
-  margin-bottom: 8px;
+  text-align: center;
+  margin-bottom: 6px;
 }
 
 .search-widget .search-powered span {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 13px;
-  font-weight: bold;
-  font-style: italic;
-  color: #cc0000;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #ff3333;
 }
 
 .search-widget .search-powered img {
   display: block;
   margin: 4px auto;
-  max-height: 50px;
+  max-width: 100%;
   image-rendering: auto;
 }
 
 .search-input-wrap {
-  background: #fff;
-  border: 2px inset #999;
-  padding: 4px 6px;
   display: flex;
-  gap: 8px;
-  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
 }
 
 .search-input-wrap input {
   flex: 1;
-  background: #fff;
-  border: none;
-  color: #000;
-  font-family: 'Times New Roman', serif;
-  font-size: 14px;
+  background: #000;
+  border: 2px inset #888;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
   padding: 4px 6px;
   outline: none;
   min-width: 0;
 }
 
 .search-input-wrap input::placeholder {
-  color: #999;
+  color: #555;
 }
 
 .search-input-wrap button {
-  background: #c0c0c0;
-  border: 2px outset #ddd;
-  color: #000;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 4px 16px;
+  background: linear-gradient(180deg, #666 0%, #333 50%, #444 100%);
+  border: 2px outset #999;
+  color: #00ff00;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  padding: 4px 8px;
   cursor: pointer;
   white-space: nowrap;
 }
 
 .search-input-wrap button:hover {
-  background: #d0d0d0;
-}
-
-.search-input-wrap button:active {
   border-style: inset;
+  color: #ffff00;
 }
 
 /* ====== RESPONSIVE ====== */
