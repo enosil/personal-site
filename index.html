@@ -685,9 +685,9 @@
     <h2>🕐 World Clocks 🕐</h2>
     <div class="clocks-grid">
       <div class="clock-card">
-        <div class="clock-label">Philippines</div>
-        <div class="clock-display" id="clock-ph"></div>
-        <div class="clock-date" id="date-ph"></div>
+        <div class="clock-label">Los Angeles</div>
+        <div class="clock-display" id="clock-la"></div>
+        <div class="clock-date" id="date-la"></div>
       </div>
       <div class="clock-card">
         <div class="clock-label">New York</div>
@@ -699,16 +699,6 @@
         <div class="clock-display" id="clock-uk"></div>
         <div class="clock-date" id="date-uk"></div>
       </div>
-    </div>
-  </div>
-
-  <hr class="rainbow-hr">
-
-  <!-- ====== NEWS FEED ====== -->
-  <div class="section-box news-section">
-    <h2>📡 News Feed 📡</h2>
-    <div id="news-feed">
-      <p class="news-loading">loading news...</p>
     </div>
   </div>
 
@@ -735,7 +725,7 @@
   // ====== WORLD CLOCKS ======
   function updateClocks() {
     const zones = [
-      { id: 'ph', tz: 'Asia/Manila' },
+      { id: 'la', tz: 'America/Los_Angeles' },
       { id: 'ny', tz: 'America/New_York' },
       { id: 'uk', tz: 'Europe/London' }
     ];
@@ -762,60 +752,6 @@
 
   updateClocks();
   setInterval(updateClocks, 1000);
-
-  // ====== NEWS FEED ======
-  async function loadNews() {
-    const feed = document.getElementById('news-feed');
-    
-    // Try multiple sources in order
-    const sources = [
-      {
-        url: 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml&count=5',
-        parse: (data) => {
-          if (data.status !== 'ok') return null;
-          return data.items.slice(0, 5).map(i => ({ title: i.title, link: i.link, date: i.pubDate, source: 'BBC News' }));
-        }
-      },
-      {
-        url: 'https://www.toptal.com/developers/feed2json/convert?url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml',
-        parse: (data) => {
-          if (!data.items) return null;
-          return data.items.slice(0, 5).map(i => ({ title: i.title, link: i.url || i.id, date: i.date_published, source: 'BBC News' }));
-        }
-      },
-      {
-        url: 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FWorld.xml&count=5',
-        parse: (data) => {
-          if (data.status !== 'ok') return null;
-          return data.items.slice(0, 5).map(i => ({ title: i.title, link: i.link, date: i.pubDate, source: 'NY Times' }));
-        }
-      }
-    ];
-
-    for (const src of sources) {
-      try {
-        const res = await fetch(src.url);
-        const data = await res.json();
-        const items = src.parse(data);
-        if (items && items.length > 0) {
-          feed.innerHTML = '';
-          items.forEach(item => {
-            const div = document.createElement('div');
-            div.className = 'news-item';
-            const d = item.date ? new Date(item.date).toLocaleDateString() : '';
-            div.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a><div class="news-source">${item.source}${d ? ' · ' + d : ''}</div>`;
-            feed.appendChild(div);
-          });
-          return; // success, stop trying
-        }
-      } catch (e) { /* try next source */ }
-    }
-
-    feed.innerHTML = '<p class="news-loading">could not load news.</p>';
-  }
-
-  loadNews();
-  setInterval(loadNews, 600000);
 
   // ====== SPARKLE TRAIL ======
   const sparkles = ['✨', '⭐', '💫', '✦', '★'];
