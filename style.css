@@ -609,29 +609,33 @@ body {
 
 /* ====== THREE-COLUMN LAYOUT ====== */
 .site-layout {
-  display: grid;
-  grid-template-columns: 180px 1fr 1fr;
-  gap: 10px;
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
   padding: 10px;
-  align-items: start;
 }
 
 .sidebar {
+  position: fixed;
+  top: 80px;
+  left: 10px;
+  width: 180px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  position: sticky;
-  top: 10px;
 }
 
 .main-content {
-  max-width: 700px;
   width: 100%;
-  justify-self: center;
 }
 
 .sidebar-right {
-  justify-self: start;
+  position: fixed;
+  top: 80px;
+  left: auto;
+  right: 10px;
+  width: calc(50% - 370px);
+  min-width: 200px;
 }
 
 /* ====== SIDEBAR WIDGETS ====== */
