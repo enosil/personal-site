@@ -610,7 +610,6 @@ body {
 /* ====== THREE-COLUMN LAYOUT ====== */
 .site-layout {
   display: flex;
-  max-width: 1100px;
   margin: 0 auto;
   gap: 10px;
   padding: 10px;
@@ -630,15 +629,15 @@ body {
 }
 
 .main-content {
-  flex: 1;
+  flex: 0 1 700px;
   min-width: 0;
-  max-width: 700px;
 }
 
 .sidebar-right {
-  width: 250px;
-  min-width: 250px;
-  max-width: 250px;
+  flex: 1;
+  min-width: 200px;
+  max-width: none;
+  width: auto;
 }
 
 /* ====== SIDEBAR WIDGETS ====== */
@@ -813,17 +812,11 @@ body {
   transform: translate(1px, 1px);
 }
 
-/* ---- Search Bar (full width) ---- */
-.search-bar-wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 10px 10px 0;
-}
-
+/* ---- Search Widget ---- */
 .search-widget {
   background: #c0c0c0;
   border: 3px outset #ddd;
-  padding: 10px 20px;
+  padding: 10px 15px;
   box-shadow: none;
   text-align: center;
 }
