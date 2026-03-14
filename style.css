@@ -609,7 +609,6 @@ body {
 
 /* ====== THREE-COLUMN LAYOUT ====== */
 .site-layout {
-  position: relative;
   max-width: 700px;
   margin: 0 auto;
   padding: 10px;
@@ -617,25 +616,25 @@ body {
 
 .sidebar {
   position: fixed;
-  top: 80px;
-  left: 10px;
-  width: 180px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.main-content {
-  width: 100%;
+.sidebar-left {
+  top: 80px;
+  left: 10px;
+  width: 180px;
 }
 
 .sidebar-right {
-  position: fixed;
   top: 80px;
-  left: auto;
   right: 10px;
-  width: calc(50% - 370px);
-  min-width: 200px;
+  left: calc(50% + 360px);
+}
+
+.main-content {
+  width: 100%;
 }
 
 /* ====== SIDEBAR WIDGETS ====== */
