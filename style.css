@@ -808,9 +808,11 @@ body {
 }
 
 /* ---- Search Widget ---- */
-.search-widget h3 {
-  color: #ffff00;
-  border-color: #ffff00;
+.search-widget {
+  background: #c0c0c0;
+  border: 3px outset #ddd;
+  padding: 10px;
+  box-shadow: none;
 }
 
 .search-widget .search-powered {
@@ -819,54 +821,65 @@ body {
 }
 
 .search-widget .search-powered span {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  color: #ff3333;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  font-style: italic;
+  color: #cc0000;
 }
 
 .search-widget .search-powered img {
-  display: block;
-  margin: 4px auto;
+  display: inline;
+  margin: 2px 0;
   max-width: 100%;
   image-rendering: auto;
+  vertical-align: middle;
 }
 
 .search-input-wrap {
+  background: #fff;
+  border: 2px inset #999;
+  padding: 4px;
   display: flex;
-  gap: 4px;
+  gap: 6px;
   margin-top: 6px;
+  align-items: center;
 }
 
 .search-input-wrap input {
   flex: 1;
-  background: #000;
-  border: 2px inset #888;
-  color: #00ff00;
-  font-family: 'Courier New', monospace;
-  font-size: 11px;
-  padding: 4px 6px;
+  background: #fff;
+  border: none;
+  color: #000;
+  font-family: 'Times New Roman', serif;
+  font-size: 13px;
+  padding: 2px 4px;
   outline: none;
   min-width: 0;
 }
 
 .search-input-wrap input::placeholder {
-  color: #555;
+  color: #999;
 }
 
 .search-input-wrap button {
-  background: linear-gradient(180deg, #666 0%, #333 50%, #444 100%);
-  border: 2px outset #999;
-  color: #00ff00;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  padding: 4px 8px;
+  background: #c0c0c0;
+  border: 2px outset #ddd;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 10px;
   cursor: pointer;
   white-space: nowrap;
 }
 
 .search-input-wrap button:hover {
+  background: #d0d0d0;
+}
+
+.search-input-wrap button:active {
   border-style: inset;
-  color: #ffff00;
 }
 
 /* ====== RESPONSIVE ====== */
