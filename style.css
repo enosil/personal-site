@@ -617,10 +617,8 @@ body {
 }
 
 .sidebar {
-  width: 180px;
+  flex: 1;
   min-width: 180px;
-  max-width: 180px;
-  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -629,15 +627,11 @@ body {
 }
 
 .main-content {
-  flex: 0 1 700px;
+  flex: 0 0 700px;
   min-width: 0;
 }
 
 .sidebar-right {
-  flex: 1;
-  min-width: 200px;
-  max-width: none;
-  width: auto;
 }
 
 /* ====== SIDEBAR WIDGETS ====== */
