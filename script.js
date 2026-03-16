@@ -129,9 +129,9 @@ if (counter) {
   if (!playBtn) return;
 
   const playlist = [
-    { title: 'Song 1', artist: 'Artist 1', src: 'music/surfing.mp3' },
-    { title: 'Song 2', artist: 'Artist 2', src: 'music/song2.mp3' },
-    { title: 'Song 3', artist: 'Artist 3', src: 'music/song3.mp3' }
+    { title: 'Song 1', artist: 'Artist 1', src: 'music/surfing.mp3' art: 'images/album1.jpg' },
+    { title: 'Song 2', artist: 'Artist 2', src: 'music/dearly.mp3' art: 'images/album2.jpg' },
+    { title: 'Song 3', artist: 'Artist 3', src: 'music/song3.mp3' art: 'images/album3.jpg' }
   ];
 
   let currentTrack = 0;
@@ -152,6 +152,7 @@ if (counter) {
     titleEl.textContent = track.title;
     artistEl.textContent = track.artist;
     progressBar.style.width = '0%';
+    document.querySelector('.music-album-art').innerHTML = '<img src="' + track.art + '" alt="album art">';
   }
 
   function togglePlay() {
