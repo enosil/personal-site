@@ -200,7 +200,12 @@ if (counter) {
   }
 
   loadTrack(0);
-  audio.play().catch(() => {});
-playBtn.textContent = '\u275A\u275A';
-isPlaying = true;
+  document.addEventListener('click', function autoplayOnce() {
+  if (!isPlaying) {
+    audio.play().catch(() => {});
+    playBtn.textContent = '\u275A\u275A';
+    isPlaying = true;
+  }
+  document.removeEventListener('click', autoplayOnce);
+}, { once: true });
 })();
