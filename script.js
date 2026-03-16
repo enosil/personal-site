@@ -128,9 +128,8 @@ if (counter) {
   const playBtn = document.getElementById('music-play');
   if (!playBtn) return;
 
-  // Add your songs here — put mp3 files in a "music/" folder
   const playlist = [
-    { title: 'Song 1', artist: 'Artist 1', src: 'music/song1.mp3' },
+    { title: 'Song 1', artist: 'Artist 1', src: 'music/surfing.mp3' },
     { title: 'Song 2', artist: 'Artist 2', src: 'music/song2.mp3' },
     { title: 'Song 3', artist: 'Artist 3', src: 'music/song3.mp3' }
   ];
