@@ -130,7 +130,7 @@ if (counter) {
 
   const playlist = [
     { title: 'Song 1', artist: 'Artist 1', src: 'music/surfing.mp3', art: 'images/album1.png' },
-    { title: 'Song 2', artist: 'Artist 2', src: 'music/dearly.mp3', art: 'images/album2.png' },
+    { title: 'Song 2', artist: 'Artist 2', src: 'music/macintosh.mp3', art: 'images/album2.png' },
     { title: 'Song 3', artist: 'Artist 3', src: 'music/song3.mp3', art: 'images/album3.png' }
   ];
 
