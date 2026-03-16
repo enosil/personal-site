@@ -129,8 +129,8 @@ if (counter) {
   if (!playBtn) return;
 
   const playlist = [
-    { title: 'Song 1', artist: 'Artist 1', src: 'music/surfing.mp3', art: 'images/album1.png' },
-    { title: 'Song 2', artist: 'Artist 2', src: 'music/macintosh.mp3', art: 'images/album2.png' },
+    { title: 'Lifetime', artist: 'SURFING', src: 'music/surfing.mp3', art: 'images/album1.png' },
+    { title: 'リサフランク420 / 現代のコンピュー', artist: 'MACINTOSH PLUS', src: 'music/macintosh.mp3', art: 'images/album2.png' },
     { title: 'Song 3', artist: 'Artist 3', src: 'music/song3.mp3', art: 'images/album3.png' }
   ];
 
